@@ -2,14 +2,12 @@ services:
   frontend:
     build: ./frontend
     ports:
-      - "8080:80"
+      - "8080:80"          # jedyny port opublikowany na hoście
     depends_on:
-      - backend
+      - backend            # nginx przy starcie musi znaleźć nazwę backend
 
   backend:
     build: ./backend
-    volumes:
-      - ./data/leaked-sha1.txt:/app/data/leaked-sha1.txt:ro
     environment:
       DB_HOST: db
       DB_NAME: ${POSTGRES_DB}

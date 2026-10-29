@@ -50,7 +50,6 @@ def check():
             found = cur.fetchone()[0]
     finally:
         conn.close()
-
     return jsonify({"found": found})
 
 
